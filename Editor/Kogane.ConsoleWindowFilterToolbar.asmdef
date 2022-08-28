@@ -1,0 +1,18 @@
+{
+    "name": "Kogane.ConsoleWindowFilterToolbar",
+    "rootNamespace": "",
+    "references": [
+        "GUID:96d90d96292062d44862f1f6b0d20633"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

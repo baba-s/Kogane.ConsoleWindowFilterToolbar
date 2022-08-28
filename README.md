@@ -1,1 +1,1 @@
-# Kogane.ConsoleWindowFilterToolbar
+# Kogane Console Window Filter Toolbar
