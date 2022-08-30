@@ -6,11 +6,16 @@ Console ウィンドウに検索ボタンを表示するエディタ拡張
 
 ![2022-08-30_201937](https://user-images.githubusercontent.com/6134875/187423868-a76b1a17-761a-4e6e-b36c-21602f1314fd.png)
 
-Console ウィンドウで検索したいテキストを Project Settings で設定して「Refresh」ボタンを押します  
+Console ウィンドウで検索したいテキストを Project Settings で設定して「Refresh」ボタンを押します
+
+|項目|内容|
+|:--|:--|
+|Button Text|ボタンに表示するテキスト|
+|Filtering Text|ボタンを押した時に検索欄に入力するテキスト|
 
 ![icon458](https://user-images.githubusercontent.com/6134875/187423887-b695d3c9-579c-4e3b-a458-510f85a66a20.gif)
 
-そして、Console ウィンドウに表示されたボタンを押すと、そのテキストでログを検索できます  
+そして、Console ウィンドウに表示されたボタンを押すと、そのテキストでログを検索できます
 
 ## 依存するパッケージ
 
