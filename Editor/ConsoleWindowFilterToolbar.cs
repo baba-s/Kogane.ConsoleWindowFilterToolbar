@@ -63,24 +63,19 @@ namespace Kogane.Internal
 
             if ( list is not { Length: > 0 } ) return;
 
-            foreach ( var text in list.Where( x => !string.IsNullOrEmpty( x ) ).Reverse() )
+            foreach ( var data in list.Where( x => x.IsValid ).Reverse() )
             {
-                m_toolbar.Add( CreateButton( text ) );
+                m_toolbar.Add( CreateButton( data.ButtonText, data.FilteringText ) );
             }
 
             m_toolbar.Add( CreateButton( "x", "" ) );
         }
 
-        private static Button CreateButton( string text )
-        {
-            return CreateButton( text, text );
-        }
-
-        private static Button CreateButton( string text, string filteringText )
+        private static Button CreateButton( string buttonText, string filteringText )
         {
             return new Button( () => ConsoleWindowInternal.SetFilter( filteringText ) )
             {
-                text = text,
+                text = buttonText,
                 style =
                 {
                     marginLeft  = 0,

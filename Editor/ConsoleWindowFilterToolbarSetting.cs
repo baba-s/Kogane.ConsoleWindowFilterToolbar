@@ -7,9 +7,9 @@ namespace Kogane.Internal
     [FilePath( "UserSettings/Kogane/ConsoleWindowFilterToolbar.asset", FilePathAttribute.Location.ProjectFolder )]
     internal sealed class ConsoleWindowFilterToolbarSetting : ScriptableSingleton<ConsoleWindowFilterToolbarSetting>
     {
-        [SerializeField] private string[] m_list = Array.Empty<string>();
+        [SerializeField] private ConsoleWindowFilterToolbarData[] m_list = Array.Empty<ConsoleWindowFilterToolbarData>();
 
-        public string[] List => m_list;
+        public ConsoleWindowFilterToolbarData[] List => m_list;
 
         public void Save()
         {
