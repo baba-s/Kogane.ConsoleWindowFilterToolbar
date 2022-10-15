@@ -35,14 +35,15 @@ namespace Kogane.Internal
 
             m_editor.OnInspectorGUI();
 
-            if ( GUILayout.Button( "Refresh" ) )
-            {
-                ConsoleWindowFilterToolbar.Refresh();
-            }
+            // if ( GUILayout.Button( "Refresh" ) )
+            // {
+            //     ConsoleWindowFilterToolbar.Refresh( true );
+            // }
 
             if ( !changeCheckScope.changed ) return;
 
             ConsoleWindowFilterToolbarSetting.instance.Save();
+            ConsoleWindowFilterToolbar.Refresh( true );
         }
 
         [SettingsProvider]

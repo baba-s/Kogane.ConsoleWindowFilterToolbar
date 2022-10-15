@@ -10,11 +10,11 @@ namespace Kogane.Internal
 
         static ConsoleWindowFilterToolbar()
         {
-            EditorApplication.delayCall += () => Refresh();
-            EditorApplication.update    += () => Refresh();
+            EditorApplication.delayCall += () => Refresh( false );
+            EditorApplication.update    += () => Refresh( false );
         }
 
-        public static void Refresh()
+        public static void Refresh( bool force )
         {
             var consoleWindow = ConsoleWindowManager.Get();
 
@@ -23,6 +23,12 @@ namespace Kogane.Internal
                 m_toolbar?.parent?.Remove( m_toolbar );
                 m_toolbar = null;
                 return;
+            }
+
+            if ( force )
+            {
+                m_toolbar?.parent?.Remove( m_toolbar );
+                m_toolbar = null;
             }
 
             if ( m_toolbar != null ) return;
