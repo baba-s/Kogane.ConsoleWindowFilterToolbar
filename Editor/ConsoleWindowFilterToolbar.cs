@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEditor;
 using UnityEngine.UIElements;
 
 namespace Kogane.Internal
@@ -9,79 +6,31 @@ namespace Kogane.Internal
     [InitializeOnLoad]
     internal static class ConsoleWindowFilterToolbar
     {
-        private static readonly Type m_type = typeof( EditorWindow ).Assembly.GetType( "UnityEditor.ConsoleWindow" );
-
         private static VisualElement m_toolbar;
-        private static EditorWindow  m_consoleWindow;
 
         static ConsoleWindowFilterToolbar()
         {
-            EditorApplication.delayCall += () => CreateGUI();
-            EditorApplication.update += () =>
+            EditorApplication.delayCall += () => Refresh();
+            EditorApplication.update    += () => Refresh();
+        }
+
+        public static void Refresh()
+        {
+            ConsoleWindowManager.TryGet( out var consoleWindow );
+
+            if ( consoleWindow == null )
             {
-                if ( m_consoleWindow == null ) return;
+                m_toolbar?.parent?.Remove( m_toolbar );
                 m_toolbar = null;
-            };
-        }
-
-        public static void CreateGUI()
-        {
-            if ( m_toolbar != null ) return;
-
-            m_consoleWindow = Resources
-                    .FindObjectsOfTypeAll( m_type )
-                    .FirstOrDefault() as EditorWindow
-                ;
-
-            if ( m_consoleWindow == null ) return;
-
-            m_toolbar = new()
-            {
-                style =
-                {
-                    flexDirection = FlexDirection.RowReverse,
-                    top           = 20,
-                    right         = 1,
-                },
-                pickingMode = PickingMode.Ignore,
-            };
-
-            var rootVisualElement = m_consoleWindow.rootVisualElement;
-            rootVisualElement.Add( m_toolbar );
-
-            Setup();
-        }
-
-        public static void Setup()
-        {
-            if ( m_toolbar == null ) return;
-
-            m_toolbar.Clear();
-
-            var setting = ConsoleWindowFilterToolbarSetting.instance;
-            var list    = setting.List;
-
-            if ( list is not { Length: > 0 } ) return;
-
-            foreach ( var data in list.Where( x => x.IsValid ).Reverse() )
-            {
-                m_toolbar.Add( CreateButton( data.ButtonText, data.FilteringText ) );
+                return;
             }
 
-            m_toolbar.Add( CreateButton( "x", "" ) );
-        }
+            if ( m_toolbar != null ) return;
 
-        private static Button CreateButton( string buttonText, string filteringText )
-        {
-            return new( () => ConsoleWindowInternal.SetFilter( filteringText ) )
-            {
-                text = buttonText,
-                style =
-                {
-                    marginLeft  = 0,
-                    marginRight = 0,
-                }
-            };
+            m_toolbar = ToolbarCreator.CreateToolbar();
+
+            var rootVisualElement = consoleWindow.rootVisualElement;
+            rootVisualElement.Add( m_toolbar );
         }
     }
 }

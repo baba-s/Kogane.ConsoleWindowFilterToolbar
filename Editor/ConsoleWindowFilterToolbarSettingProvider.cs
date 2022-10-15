@@ -37,8 +37,7 @@ namespace Kogane.Internal
 
             if ( GUILayout.Button( "Refresh" ) )
             {
-                ConsoleWindowFilterToolbar.CreateGUI();
-                ConsoleWindowFilterToolbar.Setup();
+                ConsoleWindowFilterToolbar.Refresh();
             }
 
             if ( !changeCheckScope.changed ) return;
