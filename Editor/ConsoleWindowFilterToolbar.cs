@@ -16,7 +16,7 @@ namespace Kogane.Internal
 
         public static void Refresh()
         {
-            ConsoleWindowManager.TryGet( out var consoleWindow );
+            var consoleWindow = ConsoleWindowManager.Get();
 
             if ( consoleWindow == null )
             {
