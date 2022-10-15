@@ -19,6 +19,4 @@ Console ウィンドウで検索したいテキストを Project Settings で設
 
 ## 依存するパッケージ
 
-```
-https://github.com/baba-s/Kogane.ConsoleWindowInternal.git
-```
+* https://github.com/baba-s/Kogane.ConsoleWindowInternal
