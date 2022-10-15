@@ -35,7 +35,7 @@ namespace Kogane.Internal
 
             if ( m_consoleWindow == null ) return;
 
-            m_toolbar = new VisualElement
+            m_toolbar = new()
             {
                 style =
                 {
@@ -73,7 +73,7 @@ namespace Kogane.Internal
 
         private static Button CreateButton( string buttonText, string filteringText )
         {
-            return new Button( () => ConsoleWindowInternal.SetFilter( filteringText ) )
+            return new( () => ConsoleWindowInternal.SetFilter( filteringText ) )
             {
                 text = buttonText,
                 style =
