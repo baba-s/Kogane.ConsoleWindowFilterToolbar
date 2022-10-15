@@ -12,12 +12,12 @@ namespace Kogane.Internal
 
         private static EditorWindow m_consoleWindow;
 
-        public static bool TryGet( out EditorWindow consoleWindow )
+        public static void TryGet( out EditorWindow consoleWindow )
         {
             if ( m_consoleWindow != null )
             {
                 consoleWindow = m_consoleWindow;
-                return true;
+                return;
             }
 
             m_consoleWindow = ( EditorWindow )Resources
@@ -26,8 +26,6 @@ namespace Kogane.Internal
                 ;
 
             consoleWindow = m_consoleWindow;
-
-            return m_consoleWindow != null;
         }
     }
 }
