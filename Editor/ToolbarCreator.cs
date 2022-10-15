@@ -5,7 +5,7 @@ namespace Kogane.Internal
 {
     internal static class ToolbarCreator
     {
-        public static VisualElement CreateToolbar()
+        public static VisualElement Create()
         {
             var toolbar = new VisualElement
             {

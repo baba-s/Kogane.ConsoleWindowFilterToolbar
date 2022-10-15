@@ -16,6 +16,15 @@ namespace Kogane.Internal
 
         public static void Refresh( bool force )
         {
+            var setting = ConsoleWindowFilterToolbarSetting.instance;
+
+            if ( setting.List is not { Length: > 0 } )
+            {
+                m_toolbar?.parent?.Remove( m_toolbar );
+                m_toolbar = null;
+                return;
+            }
+
             var consoleWindow = ConsoleWindowManager.Get();
 
             if ( consoleWindow == null )
@@ -33,7 +42,7 @@ namespace Kogane.Internal
 
             if ( m_toolbar != null ) return;
 
-            m_toolbar = ToolbarCreator.CreateToolbar();
+            m_toolbar = ToolbarCreator.Create();
 
             var rootVisualElement = consoleWindow.rootVisualElement;
             rootVisualElement.Add( m_toolbar );
