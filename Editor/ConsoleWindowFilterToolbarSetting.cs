@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Kogane.Internal
 {
-    [FilePath( "UserSettings/Kogane/ConsoleWindowFilterToolbar.asset", FilePathAttribute.Location.ProjectFolder )]
+    [FilePath( "UserSettings/Kogane/ConsoleWindowFilterToolbarSetting.asset", FilePathAttribute.Location.ProjectFolder )]
     internal sealed class ConsoleWindowFilterToolbarSetting : ScriptableSingleton<ConsoleWindowFilterToolbarSetting>
     {
         [SerializeField] private ConsoleWindowFilterToolbarData[] m_list = Array.Empty<ConsoleWindowFilterToolbarData>();
